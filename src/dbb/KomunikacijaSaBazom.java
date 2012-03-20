@@ -104,7 +104,7 @@ public class KomunikacijaSaBazom {
     }
     
     public boolean daLiPostoji(DomenskiObjekat obj){
-    return true;}
+    return false;}
    
     
     public DomenskiObjekat vratiDomenskiObjekat(DomenskiObjekat obj) throws Exception{
