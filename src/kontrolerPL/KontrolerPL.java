@@ -18,21 +18,21 @@ import sistemskeoperacije.*;
  */
 public class KontrolerPL {
 
-    public static void dodajDomenskiObjekat(DomenskiObjekat domenskiObjekat) throws Exception {
+    public static int dodajDomenskiObjekat(DomenskiObjekat domenskiObjekat) {
         SOSacuvaj soSacuvaj = new SOSacuvaj();
-        soSacuvaj.izvrsiSO(domenskiObjekat);
+        return soSacuvaj.izvrsiSO(domenskiObjekat);
 
     }
 
-    public static void izmeniDomenskiObjekat(DomenskiObjekat domenskiObjekat) throws Exception {
+    public static int izmeniDomenskiObjekat(DomenskiObjekat domenskiObjekat) {
         SOAzuriraj so = new SOAzuriraj();
-        so.izvrsiSO(domenskiObjekat);
+        return so.izvrsiSO(domenskiObjekat);
 
     }
 
-    public static void obrisiDomenskiObjekat(DomenskiObjekat domenskiObjekat) throws Exception {
+    public static int obrisiDomenskiObjekat(DomenskiObjekat domenskiObjekat) {
         SOObrisi soObrisi = new SOObrisi();
-        soObrisi.izvrsiSO(domenskiObjekat);
+        return soObrisi.izvrsiSO(domenskiObjekat);
     }
 
     public static DomenskiObjekat vratiDomenskiObjekat(DomenskiObjekat domenskiObjekat) throws Exception {

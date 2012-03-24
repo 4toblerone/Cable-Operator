@@ -12,25 +12,46 @@ import kab.op.domen.DomenskiObjekat;
 
 /**
  *
- * @author sale
+ * @author Sale
  */
-public class SOAzuriraj extends SOOpstaSO{
+public class SOAzuriraj extends SOOpstaSO {
 
     @Override
     protected boolean izvrsiPreduslov(DomenskiObjekat obj) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (daLiPostoji(obj)){
+              signal = 4;
+              return true;
+          }
+          else {
+              signal= 5;
+              return false;
+          }
     }
 
     @Override
     protected int izvrsiOperaciju(DomenskiObjekat obj) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        signal = KomunikacijaSaBazom.vratiInstancuKomunikacijeSaBazom().azuriraj(obj);
+        return signal;
     }
 
     @Override
     boolean stanjeOperacije(int signal) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        switch (signal) {
+            case 4:
+                return true; //preduslov je zadovoljen
+            case 5:
+                return false;//preduslov nije zadovoljen
+            case 10:
+                return true; //uspesno azurirano
+            case 11:
+                return false;//neuspesno azurirano
+
+        }
+        return false;
     }
-
     
-
+     private boolean daLiPostoji(DomenskiObjekat obj){
+   
+   return KomunikacijaSaBazom.vratiInstancuKomunikacijeSaBazom().daLiPostoji(obj);
+   }
 }

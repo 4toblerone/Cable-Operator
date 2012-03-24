@@ -17,7 +17,7 @@ public abstract class SOOpstaSO {
     static boolean BazaOtvorena = false;
     static int signal;
     
-    public int  izvrsiSO(DomenskiObjekat obj) throws Exception{
+    public int  izvrsiSO(DomenskiObjekat obj) {
         /*zvrsiPreduslov(obj);
         try{
             izvrsiOperaciju(obj);
@@ -30,10 +30,12 @@ public abstract class SOOpstaSO {
         */
         signal = 0;
         
-       if(! izvrsiPreduslov(obj)) return signal;
+       if( !izvrsiPreduslov(obj)){ 
+           System.out.println(signal);
+           return signal;}
         izvrsiOperaciju(obj);
         potvrdiIzvrsenjeSO();
-        
+        System.err.println(signal);
         return signal;
     }
 
@@ -53,17 +55,24 @@ public abstract class SOOpstaSO {
         int signal1 ;
         if(stanjeOperacije(signal)){
         signal1 = KomunikacijaSaBazom.vratiInstancuKomunikacijeSaBazom().potvrdiTransakciju();
-            if(!stanjeOperacijeOpstaSO(signal1)){
-                signal = signal1;
+        
+        if(!stanjeOperacijeOpstaSO(signal1)){
+                signal = signal1;  
                 return false;
             }
+         /*   else{
+                
+                return true;
+            }*/
         }
         else{
             signal1= KomunikacijaSaBazom.vratiInstancuKomunikacijeSaBazom().ponistiTransakciju();
+            
             if(!stanjeOperacijeOpstaSO(signal1)){
                 signal = signal1;
                 return false;
             }
+            
         }
         return true;
     }

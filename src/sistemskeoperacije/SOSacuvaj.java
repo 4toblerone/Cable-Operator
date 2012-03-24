@@ -45,7 +45,8 @@ public class SOSacuvaj extends SOOpstaSO {
     }
 
     private boolean daLiPostoji(DomenskiObjekat obj){
-        return true;
+        //return false;
+        return KomunikacijaSaBazom.vratiInstancuKomunikacijeSaBazom().daLiPostoji(obj);
     }
     
 }

@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import kab.op.domen.DomenskiObjekat;
 import kab.op.domen.Osoba;
+import kab.op.domen.Paket;
+import kontrolerPL.KontrolerPL;
 import niti.NitCekajKlijente;
 
 /**
@@ -27,9 +29,21 @@ public class ServerGUI extends javax.swing.JFrame {
     /** Creates new form ServerGUI */
     public ServerGUI() {
         initComponents();
-
-        NitCekajKlijente nck = new NitCekajKlijente();
-        nck.start();
+       Paket paket = new Paket();
+       paket.setBrzina(1);
+       paket.setCena(3);
+       paket.setNazivpaketa("proba");
+       paket.setPaketID("1");
+      paket.setOpispaketa("opis tamo neki");
+      kontrolerPL.KontrolerPL.dodajDomenskiObjekat(paket);
+      kontrolerPL.KontrolerPL.dodajDomenskiObjekat(paket);
+      kontrolerPL.KontrolerPL.obrisiDomenskiObjekat(paket);
+      kontrolerPL.KontrolerPL.dodajDomenskiObjekat(paket);
+      paket.setNazivpaketa("proba5");
+      kontrolerPL.KontrolerPL.izmeniDomenskiObjekat(paket);
+      
+        //NitCekajKlijente nck = new NitCekajKlijente();
+       // nck.start();
         //  ispisiSveOsobe();
 
     }
