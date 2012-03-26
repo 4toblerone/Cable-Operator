@@ -60,8 +60,6 @@ public abstract class SOOpstaSO {
         return true;
     }
     
-    //ovim cu primorati da klase koje budu nasledjivale ovu
-    //implementiraju ovu metodu...
    abstract boolean stanjeOperacije(int signal);
     
     boolean stanjeOperacijeOpstaSO(int signal){
@@ -76,7 +74,6 @@ public abstract class SOOpstaSO {
                 
     }
     
-     
     //implementacijom singlotona to je vec odradjeno
     private boolean otvoriBazu(){
      
