@@ -18,16 +18,6 @@ public abstract class SOOpstaSO {
     static int signal;
     
     public int  izvrsiSO(DomenskiObjekat obj) {
-        /*zvrsiPreduslov(obj);
-        try{
-            izvrsiOperaciju(obj);
-            potvrdiIzvrsenjeSO();
-        }
-        catch(Exception e){
-        ponistiIzvrsenjeSO();
-        throw  new Exception(e.getMessage());
-        }
-        */
         signal = 0;
         
        if( !izvrsiPreduslov(obj)){ 
@@ -39,8 +29,6 @@ public abstract class SOOpstaSO {
         return signal;
     }
 
-    
-    //svuda void 
    protected abstract boolean izvrsiPreduslov(DomenskiObjekat obj) ;
 
    //ovde ce se setovati signal koji ce kasnije proveravati
@@ -60,10 +48,6 @@ public abstract class SOOpstaSO {
                 signal = signal1;  
                 return false;
             }
-         /*   else{
-                
-                return true;
-            }*/
         }
         else{
             signal1= KomunikacijaSaBazom.vratiInstancuKomunikacijeSaBazom().ponistiTransakciju();
@@ -71,13 +55,10 @@ public abstract class SOOpstaSO {
             if(!stanjeOperacijeOpstaSO(signal1)){
                 signal = signal1;
                 return false;
-            }
-            
+            }    
         }
         return true;
     }
-   
-   
     
     //ovim cu primorati da klase koje budu nasledjivale ovu
     //implementiraju ovu metodu...
