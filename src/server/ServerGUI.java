@@ -11,14 +11,11 @@
 package server;
 
 import dbb.KomunikacijaSaBazom;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import kab.op.domen.DomenskiObjekat;
 import kab.op.domen.Osoba;
 import kab.op.domen.Paket;
-import kontrolerPL.KontrolerPL;
-import niti.NitCekajKlijente;
 
 /**
  *

@@ -13,8 +13,7 @@ import kab.op.domen.DomenskiObjekat;
  */
 public abstract class SOOpstaSO {
     
-    static KomunikacijaSaBazom  KSB ;
-    static boolean BazaOtvorena = false;
+    
     static int signal;
     
     public int  izvrsiSO(DomenskiObjekat obj) {
