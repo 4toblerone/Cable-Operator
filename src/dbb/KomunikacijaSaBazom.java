@@ -78,17 +78,15 @@ public class KomunikacijaSaBazom {
         try {
 
             String upit = "INSERT INTO " + obj.vratiNazivTabele() + " VALUES(" + obj.vratiVrednostiZaInsert() + ")";
-            System.out.println(upit);//da vidimo sta tacno ispisuje
             Statement dbIzraz = konekcija.createStatement();
             dbIzraz.executeUpdate(upit);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return 7; //nadji neki smisleniji broj bas za neuspelo cuvanje domenskog objekta...
-            //  throw new Exception(e.getMessage());
+            return 7; 
 
         }
-        return 6; //isto kao gore...neki smisleniji broj... 6 je ok
+        return 6; 
     }
 
     public int azuriraj(DomenskiObjekat obj) {
