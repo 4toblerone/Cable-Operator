@@ -34,9 +34,9 @@ public abstract class SOOpstaSO {
    //u potvrdi izvrsenje SO
     protected abstract int izvrsiOperaciju(DomenskiObjekat obj) ;
 
-    protected boolean ponistiIzvrsenjeSO() {
+    /*protected boolean ponistiIzvrsenjeSO() {
        return true;
-    }
+    }*/
 
     protected boolean potvrdiIzvrsenjeSO() {
         int signal1 ;
@@ -59,7 +59,7 @@ public abstract class SOOpstaSO {
         return true;
     }
     
-   abstract boolean stanjeOperacije(int signal);
+  abstract boolean stanjeOperacije(int signal);
     
     boolean stanjeOperacijeOpstaSO(int signal){
         
