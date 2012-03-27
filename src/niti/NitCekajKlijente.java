@@ -4,12 +4,9 @@
  */
 package niti;
 
-import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
-import javax.net.ssl.SSLServerSocket;
-import transfer.TransferObjekat;
 
 /**
  *

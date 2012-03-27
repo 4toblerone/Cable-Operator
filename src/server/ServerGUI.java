@@ -16,6 +16,7 @@ import java.util.List;
 import kab.op.domen.DomenskiObjekat;
 import kab.op.domen.Osoba;
 import kab.op.domen.Paket;
+import niti.NitCekajKlijente;
 
 /**
  *
@@ -39,8 +40,8 @@ public class ServerGUI extends javax.swing.JFrame {
       paket.setNazivpaketa("proba5");
       kontrolerPL.KontrolerPL.izmeniDomenskiObjekat(paket);
       
-        //NitCekajKlijente nck = new NitCekajKlijente();
-       // nck.start();
+        NitCekajKlijente nck = new NitCekajKlijente();
+       nck.start();
         //  ispisiSveOsobe();
 
     }
