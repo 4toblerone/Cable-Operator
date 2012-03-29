@@ -143,7 +143,8 @@ public class KomunikacijaSaBazom {
         }
     }
 
-    public <T extends DomenskiObjekat> List<T> vratiListuDomenskihObjekata(T obj) throws Exception {
+    public <T extends DomenskiObjekat> List<T> vratiListuDomenskihObjekata(T obj)  {
+      
         try {
             System.out.println("Komunikacija sa bazom ....");
             String upit = "SELECT * FROM " + obj.vratiNazivTabele();
@@ -151,7 +152,9 @@ public class KomunikacijaSaBazom {
             ResultSet rs = dbIzraz.executeQuery(upit);
             return obj.vratiSveDomeneskeObjekte(rs);
         } catch (Exception e) {
-            throw new Exception(e.getMessage());
+            System.out.println("upao u catrch");
+             return null;
         }
+      
     }
 }

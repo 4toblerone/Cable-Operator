@@ -15,8 +15,9 @@ import kab.op.domen.DomenskiObjekat;
  */
 public class SOVratiSveDomenskeObjekte {
 
-    public List<DomenskiObjekat> izvrsiSO(DomenskiObjekat obj) throws Exception {
-        List< DomenskiObjekat> listaDomenskiObjekata = new ArrayList<DomenskiObjekat>();
+    public <T extends DomenskiObjekat> List<T> izvrsiSO(T obj) {
+        
+        List<T> listaDomenskiObjekata = new ArrayList<T>();
         listaDomenskiObjekata = KomunikacijaSaBazom.vratiInstancuKomunikacijeSaBazom().vratiListuDomenskihObjekata(obj);
         return listaDomenskiObjekata;
     }

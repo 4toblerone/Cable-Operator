@@ -19,7 +19,7 @@ public class NitCekajKlijente extends Thread {
     @Override
     public void run() {
         try{
-        ServerSocket ss = new ServerSocket(9000);
+        ServerSocket ss = new ServerSocket(9321);
         
         while(true)
         {

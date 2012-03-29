@@ -73,27 +73,12 @@ public class CitajKlijenta extends Thread {
             List<DomenskiObjekat> listaDomenskihObjekata = KontrolerPL.vratiSveDomenskeObjekte(domenskiObjekat);
             ObjectOutputStream out = new ObjectOutputStream(soket.getOutputStream());
             to.setServerObjekat(listaDomenskihObjekata);
-            out.writeObject(to);
-            
-            /* try {
-
-            List<DomenskiObjekat> listaOsoba = new ArrayList<DomenskiObjekat>();
-
-
-            DomenskiObjekat osobaDomObjekat = new Osoba();
-            System.out.println("ispisiSveOsobe1");
-            listaOsoba = KomunikacijaSaBazom.vratiInstancuKomunikacijeSaBazom().vratiListuDomenskihObjekata(osobaDomObjekat);
-            System.out.println("ispisiSveOsobe 2");
-            for (DomenskiObjekat domenskiObjekat1 : listaOsoba) {
-                Osoba o = (Osoba) domenskiObjekat1;
-                System.out.println(o.getIme());
-
-
+            if(listaDomenskihObjekata!=null){
+                povratniSignal = 16;//uspesno izvrseno vracanje liste, da li ovo treba ovde da se setuje ili negde drugde...
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }*/
-
+           to.setUspesnostOperacije(povratniSignal);
+            out.writeObject(to);
+           
         }
 
         if (operacija == util.Util.VRATI_DOMENSKI_OBJEKAT) {

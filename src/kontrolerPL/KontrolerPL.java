@@ -37,9 +37,16 @@ public class KontrolerPL {
 
     }
 
-    public static List<DomenskiObjekat> vratiSveDomenskeObjekte(DomenskiObjekat domenskiObjekat) throws Exception {
-        SOVratiSveDomenskeObjekte soVratiSveDomenskeObjekte = new SOVratiSveDomenskeObjekte();
-        return soVratiSveDomenskeObjekte.izvrsiSO(domenskiObjekat);
+    public static <T extends DomenskiObjekat> List<T> vratiSveDomenskeObjekte(T domenskiObjekat) {
+       SOVratiSveDomenskeObjekte soVratiSveDomenskeObjekte ;
+        try{
+         soVratiSveDomenskeObjekte = new SOVratiSveDomenskeObjekte();
+         return soVratiSveDomenskeObjekte.izvrsiSO(domenskiObjekat);
+        }
+        catch(Exception e){
+            return null;
+        }
+        
     }
 }
 

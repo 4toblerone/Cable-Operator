@@ -39,9 +39,11 @@ public class ServerGUI extends javax.swing.JFrame {
       kontrolerPL.KontrolerPL.dodajDomenskiObjekat(paket);
       paket.setNazivpaketa("proba5");
       kontrolerPL.KontrolerPL.izmeniDomenskiObjekat(paket);
-      
-        NitCekajKlijente nck = new NitCekajKlijente();
-       nck.start();
+        System.out.println("");
+        List<Paket> vratiSveDomenskeObjekte = kontrolerPL.KontrolerPL.vratiSveDomenskeObjekte(paket);
+        System.out.println(vratiSveDomenskeObjekte);
+          NitCekajKlijente nck = new NitCekajKlijente();
+           nck.start();
         //  ispisiSveOsobe();
 
     }
