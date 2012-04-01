@@ -45,56 +45,58 @@ public class CitajKlijenta extends Thread {
     private void obradiZahtev(TransferObjekat to) throws Exception, IOException {
         //ovde saljem nazad klijentu ono sto je trazio
         //do kontrolera, on so operaciju ona do brokera
+        ObjectOutputStream oos = new ObjectOutputStream(soket.getOutputStream());
         DomenskiObjekat domenskiObjekat = (DomenskiObjekat) to.getKlijentObjekat();
         int operacija = to.getOperacija();
         int povratniSignal = 0;
 
         if (operacija == util.Util.DODAJ_DOMENSKI_OBJEKAT) {
 
-          povratniSignal =  KontrolerPL.dodajDomenskiObjekat(domenskiObjekat);
+            povratniSignal = KontrolerPL.dodajDomenskiObjekat(domenskiObjekat);
             System.out.println(povratniSignal);
-          to.setUspesnostOperacije(povratniSignal);
-          ObjectOutputStream oos = new ObjectOutputStream(soket.getOutputStream());
-          oos.writeObject(to);
-          oos.flush();
+            to.setUspesnostOperacije(povratniSignal);
+            oos.writeObject(to);
+            oos.flush();
         }
         if (operacija == util.Util.IZMENI_DOMENSKI_OBJEKAT) {
+            System.out.println("izmeni domenski objekat");
+            povratniSignal = KontrolerPL.izmeniDomenskiObjekat(domenskiObjekat);
+            to.setUspesnostOperacije(povratniSignal);
+            oos.writeObject(to);
+            oos.flush();
 
-            povratniSignal =     KontrolerPL.izmeniDomenskiObjekat(domenskiObjekat);
-
-            if (operacija == util.Util.OBRISI_DOMENSKI_OBJEKAT) {
-               povratniSignal =  KontrolerPL.obrisiDomenskiObjekat(domenskiObjekat);
-
-            }
         }
+        if (operacija == util.Util.OBRISI_DOMENSKI_OBJEKAT) {
+            povratniSignal = KontrolerPL.obrisiDomenskiObjekat(domenskiObjekat);
+            to.setUspesnostOperacije(povratniSignal);
+            oos.writeObject(to);
+            oos.flush();
+
+        }
+
 
         if (operacija == util.Util.VRATI_SVE_DOMENSKE_OBJEKTE) {
 
             List<DomenskiObjekat> listaDomenskihObjekata = KontrolerPL.vratiSveDomenskeObjekte(domenskiObjekat);
-            ObjectOutputStream out = new ObjectOutputStream(soket.getOutputStream());
+
             to.setServerObjekat(listaDomenskihObjekata);
-            if(listaDomenskihObjekata!=null){
-                povratniSignal = 16;//uspesno izvrseno vracanje liste, da li ovo treba ovde da se setuje ili negde drugde...
+            if (listaDomenskihObjekata != null) {
+                povratniSignal = 12;//uspesno izvrseno vracanje liste, da li ovo treba ovde da se setuje ili negde drugde...
+            } else {
+                povratniSignal = 13;
             }
-           to.setUspesnostOperacije(povratniSignal);
-            out.writeObject(to);
-           
+            to.setUspesnostOperacije(povratniSignal);
+            oos.writeObject(to);
+            oos.flush();
         }
 
         if (operacija == util.Util.VRATI_DOMENSKI_OBJEKAT) {
 
             DomenskiObjekat domObj = KontrolerPL.vratiDomenskiObjekat(domenskiObjekat);
             to.setServerObjekat(domObj);
-            ObjectOutputStream out = new ObjectOutputStream(soket.getOutputStream());
-            out.writeObject(to);
+            oos.writeObject(to);
+            oos.flush();
 
-            
-            
         }
-        if (operacija == util.Util.VRATI_LISTU_DUGOVANJA) {
-        }
-
-       
-
     }
 }

@@ -96,22 +96,23 @@ public class KomunikacijaSaBazom {
             dbIzmena.executeUpdate(upit);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return 11;
+            return 9;
         }
-        return 10;
+        return 8;
     }
 
     public int obrisi(DomenskiObjekat obj) {
         try {
+            System.out.println("Pokusaj brisanja...");
             String upit = "DELETE FROM " + obj.vratiNazivTabele() + " WHERE" + obj.vratiUslovPK()+";";
             Statement dbIzraz = konekcija.createStatement();
             dbIzraz.executeUpdate(upit);
         } catch (Exception e) {
             System.err.println(e.getMessage());
-            return 9;
+            return 11;
         }
-
-        return 8;
+            System.out.println(10);
+        return 10;
     }
 
     public boolean daLiPostoji(DomenskiObjekat obj) {
