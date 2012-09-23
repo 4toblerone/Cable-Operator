@@ -11,7 +11,7 @@ import kab.op.domen.DomenskiObjekat;
 
 /**
  *
- * @author sale
+ * @author Sale
  */
 public class SOVratiSveDomenskeObjekte {
 
